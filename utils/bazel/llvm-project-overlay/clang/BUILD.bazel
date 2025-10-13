@@ -149,7 +149,6 @@ gentbl_cc_library(
     td_file = "include/clang/Basic/arm_sve.td",
     deps = [":ArmTdFiles"],
 )
-
 gentbl_cc_library(
     name = "basic_arm_sve_builtin_cg_gen",
     tbl_outs = {"include/clang/Basic/arm_sve_builtin_cg.inc": ["-gen-arm-sve-builtin-codegen"]},
