@@ -46,9 +46,6 @@ public:
 
 char X86GlobalBaseRegLegacy::ID = 0;
 
-INITIALIZE_PASS(X86GlobalBaseRegLegacy, DEBUG_TYPE,
-                "X86 PIC Global Base Reg Initialization", false, false)
-
 FunctionPass *llvm::createX86GlobalBaseRegLegacyPass() {
   return new X86GlobalBaseRegLegacy();
 }
