@@ -78,6 +78,7 @@ extern "C" LLVM_C_ABI void LLVMInitializeX86Target() {
   initializeCompressEVEXLegacyPass(PR);
   initializeFixupLEAsLegacyPass(PR);
   initializeX86FPStackifierLegacyPass(PR);
+  initializeX86GlobalBaseRegLegacyPass(PR);
   initializeX86FixupSetCCLegacyPass(PR);
   initializeX86CallFrameOptimizationLegacyPass(PR);
   initializeX86CleanupLocalDynamicTLSLegacyPass(PR);
@@ -463,7 +464,7 @@ bool X86PassConfig::addInstSelector() {
       getOptLevel() != CodeGenOptLevel::None)
     addPass(createCleanupLocalDynamicTLSLegacyPass());
 
-  addPass(createX86GlobalBaseRegPass());
+  addPass(createX86GlobalBaseRegLegacyPass());
   addPass(createX86ArgumentStackSlotLegacyPass());
   return false;
 }
@@ -493,7 +494,7 @@ bool X86PassConfig::addGlobalInstructionSelect() {
   addPass(new InstructionSelect(getOptLevel()));
   // Add GlobalBaseReg in case there is no SelectionDAG passes afterwards
   if (isGlobalISelAbortEnabled())
-    addPass(createX86GlobalBaseRegPass());
+    addPass(createX86GlobalBaseRegLegacyPass());
   return false;
 }
 

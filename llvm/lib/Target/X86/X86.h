@@ -35,7 +35,13 @@ class X86TargetMachine;
 FunctionPass *createX86ISelDag(X86TargetMachine &TM, CodeGenOptLevel OptLevel);
 
 /// This pass initializes a global base register for PIC on x86-32.
-FunctionPass *createX86GlobalBaseRegPass();
+class X86GlobalBaseRegPass : public PassInfoMixin<X86GlobalBaseRegPass> {
+public:
+  PreservedAnalyses run(MachineFunction &MF,
+                        MachineFunctionAnalysisManager &MFAM);
+};
+
+FunctionPass *createX86GlobalBaseRegLegacyPass();
 
 /// This pass combines multiple accesses to local-dynamic TLS variables so that
 /// the TLS base address for the module is only fetched once per execution path
@@ -433,6 +439,7 @@ void initializeX86DynAllocaExpanderLegacyPass(PassRegistry &);
 void initializeX86ExecutionDomainFixPass(PassRegistry &);
 void initializeX86ExpandPseudoLegacyPass(PassRegistry &);
 void initializeX86FPStackifierLegacyPass(PassRegistry &);
+void initializeX86GlobalBaseRegLegacyPass(PassRegistry &);
 void initializeX86FastPreTileConfigLegacyPass(PassRegistry &);
 void initializeX86FastTileConfigLegacyPass(PassRegistry &);
 void initializeX86FixupSetCCLegacyPass(PassRegistry &);
