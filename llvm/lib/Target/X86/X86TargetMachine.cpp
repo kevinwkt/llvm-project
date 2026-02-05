@@ -78,7 +78,6 @@ extern "C" LLVM_C_ABI void LLVMInitializeX86Target() {
   initializeCompressEVEXLegacyPass(PR);
   initializeFixupLEAsLegacyPass(PR);
   initializeX86FPStackifierLegacyPass(PR);
-  initializeX86GlobalBaseRegLegacyPass(PR);
   initializeX86FixupSetCCLegacyPass(PR);
   initializeX86CallFrameOptimizationLegacyPass(PR);
   initializeX86CleanupLocalDynamicTLSLegacyPass(PR);
