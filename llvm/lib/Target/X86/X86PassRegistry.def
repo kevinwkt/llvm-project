@@ -67,7 +67,6 @@ MACHINE_FUNCTION_PASS("x86-wineh-unwindv2", X86WinEHUnwindV2Pass())
 #define DUMMY_MACHINE_FUNCTION_PASS(NAME, PASS_NAME)
 #endif
 DUMMY_MACHINE_FUNCTION_PASS("x86-execution-domain-fix", X86ExecutionDomainFix())
-
 DUMMY_MACHINE_FUNCTION_PASS("x86-indirect-branch-tracking", X86IndirectBranchTrackingPass())
 DUMMY_MACHINE_FUNCTION_PASS("x86-indirect-thunks", X86IndirectThunks())
 DUMMY_MACHINE_FUNCTION_PASS("x86-insert-x87-wait", X86InsertX87WaitPass())

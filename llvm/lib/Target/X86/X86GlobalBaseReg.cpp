@@ -139,10 +139,7 @@ bool X86GlobalBaseRegLegacy::runOnMachineFunction(MachineFunction &MF) {
 PreservedAnalyses
 X86GlobalBaseRegPass::run(MachineFunction &MF,
                           MachineFunctionAnalysisManager &MFAM) {
-  bool Changed = initGlobalBaseReg(MF);
-  if (!Changed)
-    return PreservedAnalyses::all();
-  PreservedAnalyses PA = getMachineFunctionPassPreservedAnalyses();
-  PA.preserveSet<CFGAnalyses>();
-  return PA;
+  return initGlobalBaseReg(MF) ? getMachineFunctionPassPreservedAnalyses()
+                                     .preserveSet<CFGAnalyses>()
+                               : PreservedAnalyses::all();
 }

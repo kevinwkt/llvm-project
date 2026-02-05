@@ -439,7 +439,6 @@ void initializeX86DynAllocaExpanderLegacyPass(PassRegistry &);
 void initializeX86ExecutionDomainFixPass(PassRegistry &);
 void initializeX86ExpandPseudoLegacyPass(PassRegistry &);
 void initializeX86FPStackifierLegacyPass(PassRegistry &);
-void initializeX86GlobalBaseRegLegacyPass(PassRegistry &);
 void initializeX86FastPreTileConfigLegacyPass(PassRegistry &);
 void initializeX86FastTileConfigLegacyPass(PassRegistry &);
 void initializeX86FixupSetCCLegacyPass(PassRegistry &);
