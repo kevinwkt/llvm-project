@@ -438,7 +438,7 @@ void SLSHardeningInserter::convertBLRToBL(
 
   const AArch64Subtarget *ST =
       &MBB.getParent()->getSubtarget<AArch64Subtarget>();
-  createThunkFunction(MMI, ThunkName, ComdatThunks, ST->hasBTI() ? "+bti" : "");
+  createThunkFunction(MMI, ThunkName, ComdatThunks, (ST->hasBTI() && ST->hasPAuth()) ? "+bti,+pauth" : ST->hasBTI() ? "+bti" : ST->hasPAuth() ? "+pauth" : "");
 
   MachineInstr *BL = BuildMI(MBB, MBBI, DL, TII->get(AArch64::BL)).addSym(Sym);
 
